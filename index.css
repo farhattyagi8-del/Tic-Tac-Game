@@ -38,6 +38,7 @@ body{
      box-shadow: 0 0 1rem rgb(0, 0, 0);
      font-size: 8vmin;
      color: rgb(232, 20, 20);
+     background-color: rgb(211, 238, 114);
 }
 
 
@@ -48,6 +49,32 @@ body{
     background-color: rgb(0, 0, 0);
     color: rgb(241, 242, 245);
    border: none;
+}
+
+#new-btn{
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: rgb(0, 0, 0);
+    color: rgb(241, 242, 245);
+   border: none;
+}
+
+#msg{
+    font-size: 2rem;
+    color: rgb(241, 242, 245);
+}
+
+.msg-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.hidden{
+    display: none;
 }
 
 
