@@ -12,7 +12,7 @@ let count = 0;
     [0, 1, 2],
     [0, 3, 6],
     [0, 4, 8],  
-    [1, 4, 7],
+    [1, 4, 7], 
     [2, 5, 8],
     [2, 4, 6],
     [3, 4, 5],
@@ -58,6 +58,7 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
     msg.innerText = "No winnenr";
     msgContainer.classList.remove("hidden"); //
     disableBoxes();
+
    };
 
 
@@ -79,6 +80,9 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
     msg.innerText = `Congratulations! ${winner} wins!`;
     msgContainer.classList.remove("hidden");
         disableBoxes();
+
+        
+        
    };
 
 
@@ -107,3 +111,8 @@ const checkWinner = () => {  // this function use for check the winner by iterat
 // // this is use for add event listner on new game button when click on new game button then it will reset the game
 resetbtn.addEventListener("click", resetGame);
 
+
+
+
+
+ 
