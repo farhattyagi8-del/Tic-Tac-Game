@@ -3,6 +3,9 @@ let resetbtn = document.querySelector("#reset-btn");
 let newbtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container"); //this use for select the element of html like sclass or id nane to access
 let msg = document.querySelector("#msg");
+let clickSound = document.querySelector("#clickSound");
+let music = document.querySelector("#music");
+let winSound = document.querySelector("#winSound");
 
  
 let turnO = true;   // this variable use for check the turn of player if true then O and false then X
@@ -29,7 +32,10 @@ let count = 0;
 
 boxes.forEach((box) => {    //this use for add event listner on each box when click on box then it will check the turn of player and update the box with O or X and disable the box after click and also check the winner after each click
 
-    box.addEventListener("click", () => {   //
+    box.addEventListener("click", () => {  
+        
+        
+        clickSound.play();
         // console.log("box clicked");
         if (turnO) {
             box.innerText ="O"; // this is use for update the box with O when turnO is true
@@ -43,7 +49,8 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
 
         let isWinner = checkWinner();  // this is use for check the winner after each click and return true if there is a winner
 
-        if (count === 9 && !isWinner) { // this is use for check the game draw when count is 9 and no winner
+        if (count === 9 && !isWinner) { 
+             music.play(); // this is use for play the music when game is draw
             gameDraw();
 
         //  cheackWinner();
@@ -56,6 +63,7 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
 
    const gameDraw = () => {  // this function use for show the game draw message when there is no winner and count is 9
     msg.innerText = "No winnenr";
+    music.play();
     msgContainer.classList.remove("hidden"); //
     disableBoxes();
 
@@ -78,6 +86,8 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
 
  const showWinner = (winner) => { // this function use for show the winner message when there is a winner and also disable all the boxes
     msg.innerText = `Congratulations! ${winner} wins!`;
+    winSound.play();
+    showConfetti();
     msgContainer.classList.remove("hidden");
         disableBoxes();
 
@@ -115,4 +125,18 @@ resetbtn.addEventListener("click", resetGame);
 
 
 
- 
+
+
+
+
+
+
+ function showConfetti() {
+    confetti ({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+ }
+
+

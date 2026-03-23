@@ -4,17 +4,25 @@
     
 }
  
-body{
-    background-color: rgb(23, 108, 80);
+ body{
+     
     text-align: center;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+ }
+ 
+h1{
+    margin-top: 2rem;
+    color: rgb(241, 242, 245);
+        font-size: 3rem;
 }
-
 .container{
-    height: 70vh;
-    display: flex;
+    height: 700px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
     
-    justify-content: center;
-        align-items: center;
+    
 }
 
 .box{
@@ -38,7 +46,7 @@ body{
      box-shadow: 0 0 1rem rgb(0, 0, 0);
      font-size: 8vmin;
      color: rgb(232, 20, 20);
-     background-color: rgb(211, 238, 114);
+     background-color: rgb(91, 160, 164);
 }
 
 
@@ -49,15 +57,10 @@ body{
     background-color: rgb(0, 0, 0);
     color: rgb(241, 242, 245);
    border: none;
+   margin-top: 400px;
 }
 
-#new-btn{
-    padding: 1rem;
-    font-size: 1.25rem;
-    background-color: rgb(0, 0, 0);
-    color: rgb(241, 242, 245);
-   border: none;
-}
+
 
 #msg{
     font-size: 2rem;
