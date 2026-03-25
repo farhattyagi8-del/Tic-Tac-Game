@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic -tac game</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
     <div class="msg-container  hidden">
@@ -28,11 +29,36 @@
 
             </div>
         </div>   
-              <button id="reset-btn">Reset game</button>
-
-              <audio id="clickSound" src="freesound_crunchpixstudio-button-394464.mp3"></audio>
+         <audio id="clickSound" src="freesound_crunchpixstudio-button-394464.mp3"></audio>
               <audio id="music" src="mixkit-arcade-retro-game-over-213.wav" ></audio>
               <audio id="winSound" src="superpuyofans1234-winner-game-sound-404167.mp3" ></audio>
+
+              
+              
+              
+              <div class="options">
+              <button id="resetbtn"><i class="fa-solid fa-power-off" id="btn"></i> </button>
+            
+                <button id="homebtn">
+                    <span class="icon">🏠</span>
+                </button>
+              
+
+              <!-- hidden home menu -->
+              <div  id="homemenu" class="hide">
+               <button id="volumebtn">volume</button>
+               <button id="themsbtn">thems</button>
+              </div>
+              </div>
+              
+
+
+
+
+
+              
+              
+
 
      </main>
         <script src="index.js"></script>
