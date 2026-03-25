@@ -6,6 +6,7 @@ let msg = document.querySelector("#msg");
 let clickSound = document.querySelector("#clickSound");
 let music = document.querySelector("#music");
 let winSound = document.querySelector("#winSound");
+// let themsbtn = document.querySelector("themsbtn");
 
  
 let turnO = true;   // this variable use for check the turn of player if true then O and false then X
@@ -38,10 +39,12 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
         if (!isMuted) clickSound.play();
         // console.log("box clicked");
         if (turnO) {
-            box.innerText ="O"; // this is use for update the box with O when turnO is true
+            box.innerText ="O";
+            box.classList.add("O"); // this is use for update the box with O when turnO is true
             turnO = false;
         }else {
             box.innerText = "X";
+            box.classList.add("x");
             turnO = true;
         }
         box.disabled = true; // this is use for disable the box after click
@@ -167,4 +170,19 @@ const stopAllSound = () => { //all sound stop function
      music.currentTime = 0;
       winSound.currentTime = 0;
 
+};
+   
+const themsbtn = document.getElementById("themsbtn");
+
+themsbtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");  //its use for on off 
+
+
+if 
+(document.body.classList.contains ("dark-mode")){
+    themsbtn.textContent = "🔆";
+} else {
+    themsbtn.textContent = "🌛";
 }
+});
+

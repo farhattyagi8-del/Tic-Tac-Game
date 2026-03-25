@@ -11,6 +11,17 @@
     linear-gradient(135deg, #0f2027, #203a43, #2c5364);
  }
  
+ .dark-mode {
+    background-color: #121212;
+    color: white;
+ }
+ .dark-mode h1 {
+    color: white;
+ }
+ .dark-mode .box {
+    background-color: #333;
+    color: white;
+ }
 h1{
     margin-top: 2rem;
     color: rgb(241, 242, 245);
@@ -47,6 +58,19 @@ h1{
      font-size: 8vmin;
      color: rgb(232, 20, 20);
      background-color: rgb(91, 160, 164);
+     border: none;
+     background: linear-gradient(180deg, #007cc9, #ff3);
+     /* transition: transform 0.3s ease; */
+       /* box-shadow: 
+    
+    0 15px 25px rgba(0,0,0,0.4),
+    inset 0 4px 10px rgba(255,255,255,0.4); */
+}
+.box:hover{
+    transform: translate(2px);
+         box-shadow: 
+     0 15px 25px rgba(0,0,0,0.4),
+    inset 0 4px 10px rgba(255,255,255,0.4);
 }
 
 #msg{
@@ -194,4 +218,22 @@ h1{
     font-size: 2rem;
     color: aliceblue;
     
+}
+
+.box.x{
+    font-size: 5rem;
+    color: #0252a3;
+    text-shadow: 0 0 10px rgba(77, 166, 255, 0.8);
+      text-shadow: 0 0 10px rgba(77, 166, 255, 0.6);
+        text-shadow: 0 0 10px rgba(77, 166, 255, 0.4);
+     
+}
+
+.box.O{
+    font-size: 5rem;
+    color: #0252a3;
+    text-shadow: 0 0 10px rgba(3, 74, 145, 0.8);
+      text-shadow: 0 0 10px rgba(77, 166, 255, 0.6);
+        text-shadow: 0 0 10px rgba(77, 166, 255, 0.4);
+     
 }
