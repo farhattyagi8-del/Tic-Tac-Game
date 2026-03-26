@@ -92,7 +92,7 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
     showConfetti();
     msgContainer.classList.remove("hidden");
         disableBoxes();
-      saveWinner();   //this is call from backend
+      saveWinner(winner);   //this is call from backend
         
         
    };
@@ -158,7 +158,7 @@ const volumebtn = document.getElementById("volumebtn");
 volumebtn.addEventListener("click", () =>{
     isMuted  = !isMuted;
     volumebtn.textContent = isMuted ? "🔇" : "🔊"
-    if (isMuted) stopAllsound();
+    if (isMuted) stopAllSound();
 });
 
 
@@ -188,7 +188,7 @@ if
 
 
 function saveWinner(winner) {
-    fetch("https://127.0.0.1:5000/add", {
+    fetch("http://localhost:5000/add", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
