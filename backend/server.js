@@ -33,8 +33,8 @@ app.get("/", (req, res) => {
 
 app.post("/add", async (req, res) => {   //this update of that 
     try{
-        const game = new Game(req,body);
-        await game.save(0);
+        const game = new Game(req.body);
+        await game.save();
         res.send("Game Saved");
     }catch (err) {
         res.status(500).send(err);
@@ -57,25 +57,4 @@ app.get("/games", async (req, res) => {
 
 app.listen(5000, () => {console.log("server running");
 
-});
-
-
-fetch("http://localhost:5000/add", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-
-    body: JSON.stringify({
-        winner: "currentPlayer"
-    })
-});
-
-
-
-
-fetch("https://localhost:5000/game")
-.then(res => res.json())
-.then(data => {
-    console.log(data);
 });
