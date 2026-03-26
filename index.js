@@ -6,7 +6,43 @@ let msg = document.querySelector("#msg");
 let clickSound = document.querySelector("#clickSound");
 let music = document.querySelector("#music");
 let winSound = document.querySelector("#winSound");
-// let themsbtn = document.querySelector("themsbtn");
+
+function loadScore() {
+    fetch("http://127.0.0.1:5000/games")
+    .then(res => res.json())
+    .then(data => {
+        let xCount = 0;
+        let OCount = 0;
+
+        data.forEach(game => {
+            if(game.winner === "X") xCount++;
+            if(game.winner === "O") OCount++;
+        });
+
+
+        document.getElementById("xscore").innerText = xCount;
+        document.getElementById("Oscore").innerText = OCount;
+
+    })
+    .catch(err => console.log(err));
+    
+};
+
+
+
+        // let xScore = 0;
+        // let OScore = 0;
+
+    
+        //     if(winner === "X") {xScore++;}else{
+        //     if(winner === "O") OScore++;}
+            
+
+
+        // document.getElementById("xScore").innerText = xSount;
+        // document.getElementById("OScore").innerText = OSount;
+
+
 
  
 let turnO = true;   // this variable use for check the turn of player if true then O and false then X
@@ -93,7 +129,7 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
     msgContainer.classList.remove("hidden");
         disableBoxes();
       saveWinner(winner);   //this is call from backend
-        
+         loadScore();
         
    };
 
@@ -199,3 +235,4 @@ function saveWinner(winner) {
     .then(data => console.log("saved:", data))
     .catch(err => console.log("error:", err));
 }
+
