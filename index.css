@@ -12,15 +12,16 @@
  }
  
  .dark-mode {
-    background-color: #121212;
+     background: radial-gradient(circle, #121212, #17fca8);
     color: white;
  }
- .dark-mode h1 {
-    color: white;
- }
+ 
  .dark-mode .box {
     background-color: #333;
-    color: white;
+    background-color: rgb(91, 160, 164);
+     border: none;
+     background: linear-gradient(180deg, #3e433b, #ff3);
+    
  }
 h1{
     margin-top: 2rem;
@@ -31,14 +32,7 @@ h1{
     height: 700px;
      display: flex;
      justify-content: center;
-     align-items: center;
-    
-    
-}
-
-.box{
-    height: 70vh;
-
+     align-items: center; 
 }
 .game{
     height: 60vmin;
@@ -59,12 +53,8 @@ h1{
      color: rgb(232, 20, 20);
      background-color: rgb(91, 160, 164);
      border: none;
-     background: linear-gradient(180deg, #007cc9, #ff3);
-     /* transition: transform 0.3s ease; */
-       /* box-shadow: 
-    
-    0 15px 25px rgba(0,0,0,0.4),
-    inset 0 4px 10px rgba(255,255,255,0.4); */
+     background: linear-gradient(180deg, #007cc9, #ff3); 
+     
 }
 .box:hover{
     transform: translate(2px);
@@ -95,22 +85,11 @@ h1{
 .options{
     height: 300px;
     width: 100%;
-    /* background-color: greenyellow; */
     display: flex;
     gap: 20px;
     align-items: center;
     justify-content: center;
 }
-
-/* #resetbtn{
-    
-     padding: 1rem;
-    font-size: 1.25rem;
-    background-color: rgb(0, 0, 0);
-    color: rgb(241, 242, 245);
-   border: none;
-   
-} */
 
 .menu{
     height: 100px;
@@ -125,10 +104,7 @@ h1{
 }
 
  #homemenu button{
-    /* height: 40px;
-    width: 150px; */
-   /* background: #bad6e2; */
-   /* color: antiquewhite; */
+    
    cursor: pointer;
    transition: all 0.3 ease;
    padding: 1rem;
@@ -161,10 +137,11 @@ h1{
     border: none;
     margin-top: 200px;
     text-shadow: #1b2123 3px 0 ;
+    opacity: 0.5;
+    backdrop-filter: blur(80px);
+    background-color: transparent;
    
 }
-
-
 
 #homebtn {
   width: 200px;
