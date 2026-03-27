@@ -238,11 +238,87 @@ function saveWinner(winner) {
 };
 
 
+// function computerMove() {
+//     let emptyBoxes = [];          // its basicallyy computer and random choice empty box
+
+//     boxes.forEach((box, index) => {
+//         if(box.innerText === "") {
+//             emptyBoxes.push(index);
+//         }
+//     });
+
+//     if (emptyBoxes.length === 0) return;
+
+//     let randomIndex = emptyBoxes[Math.floor(Math.random() * emptyBoxes.length)];
+//     let  box = boxes[randomIndex];
+
+//     box.innerText = "X";
+//     box.classList.add("x");
+//     box.disabled = true;
+
+//     count++;
+
+//       let iswinner = checkWinner();
+//       if (count === 9 && !iswinner){
+//         gameDraw();
+//       }
+
+
+//  }
+
+
 function computerMove() {
-    let emptyBoxes = [];
+    // let emptyBoxes = [];
+    for(let pattern of winPatterns) {
+        let[a, b, c,] = pattern;
+
+        let val1 = boxes[a].innerText;
+         let val2 = boxes[b].innerText;
+          let val3 = boxes[c].innerText;
+
+          if(val1 === "X" && val2 === "X" && val3 === ""){
+            makeMove(c);
+            return;
+          }
+
+          if(val1 === "X" && val3 === "X" && val2 === ""){
+            makeMove(b);
+            return;
+          }
+
+          if(val2 === "X" && val3 === "X" && val1 === ""){
+            makeMove(a);
+            return;
+          }
+    }
+      // block move of O
+    for(let pattern of winPatterns) {
+        let[a, b, c,] = pattern;
+
+        let val1 = boxes[a].innerText;
+         let val2 = boxes[b].innerText;
+          let val3 = boxes[c].innerText;
+
+          if(val1 === "O" && val2 === "O" && val3 === ""){
+            makeMove(c);
+            return;
+          }
+
+          if(val1 === "O" && val3 === "O" && val2 === ""){
+            makeMove(b);
+            return;
+          }
+
+          if(val2 === "O" && val3 === "O" && val1 === ""){
+            makeMove(a);
+            return;
+          }
+    }
+
+        let emptyBoxes = [];
 
     boxes.forEach((box, index) => {
-        if(box.innerText === "") {
+        if(box.innerText === ""){    
             emptyBoxes.push(index);
         }
     });
@@ -250,18 +326,21 @@ function computerMove() {
     if (emptyBoxes.length === 0) return;
 
     let randomIndex = emptyBoxes[Math.floor(Math.random() * emptyBoxes.length)];
-    let  box = boxes[randomIndex];
+    makeMove(randomIndex);
+
+
+}
+
+//  Random move  
+function makeMove(index){
+    let box = boxes[index];
 
     box.innerText = "X";
     box.classList.add("x");
     box.disabled = true;
-
-    count++;
-
-      let iswinner = checkWinner();
-      if (count === 9 && !iswinner){
+count++;
+     let iswinner = checkWinner();
+ if (count === 9 && !iswinner){
         gameDraw();
-      }
-
-
- }
+    }
+}
