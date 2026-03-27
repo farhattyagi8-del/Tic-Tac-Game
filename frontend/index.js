@@ -7,43 +7,9 @@ let clickSound = document.querySelector("#clickSound");
 let music = document.querySelector("#music");
 let winSound = document.querySelector("#winSound");
 
-function loadScore() {
-    fetch("http://127.0.0.1:5000/games")
-    .then(res => res.json())
-    .then(data => {
-        let xCount = 0;
-        let OCount = 0;
-
-        data.forEach(game => {
-            if(game.winner === "X") xCount++;
-            if(game.winner === "O") OCount++;
-        });
-
-
-        document.getElementById("xscore").innerText = xCount;
-        document.getElementById("Oscore").innerText = OCount;
-
-    })
-    .catch(err => console.log(err));
-    
-};
-
-
-
-        // let xScore = 0;
-        // let OScore = 0;
-
-    
-        //     if(winner === "X") {xScore++;}else{
-        //     if(winner === "O") OScore++;}
-            
-
-
-        // document.getElementById("xScore").innerText = xSount;
-        // document.getElementById("OScore").innerText = OSount;
-
-
-
+// Current session scores (reset on page refresh)
+let xScore = 0;
+let OScore = 0;
  
 let turnO = true;   // this variable use for check the turn of player if true then O and false then X
 let count = 0;
@@ -73,7 +39,6 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
         
         
         if (!isMuted) clickSound.play();
-        // console.log("box clicked");
         if (turnO) {
             box.innerText ="O";
             box.classList.add("O"); // this is use for update the box with O when turnO is true
@@ -90,8 +55,6 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
 
         if (count === 9 && !isWinner) { 
             gameDraw();
-
-        //  cheackWinner();
         }
 
     });
@@ -128,9 +91,17 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
     showConfetti();
     msgContainer.classList.remove("hidden");
         disableBoxes();
-      saveWinner(winner);   //this is call from backend
-         loadScore();
-        
+
+        // Update current session scores
+        if (winner === "X") {
+            xScore++;
+            document.getElementById("xscore").innerText = xScore;
+        } else if (winner === "O") {
+            OScore++;
+            document.getElementById("Oscore").innerText = OScore;
+        }
+
+        saveWinner(winner);   // Save to MongoDB for records
    };
 
 
@@ -155,18 +126,8 @@ const checkWinner = () => {  // this function use for check the winner by iterat
 
 };
 
-
 // // this is use for add event listner on new game button when click on new game button then it will reset the game
 resetbtn.addEventListener("click", resetGame);
-
-
-
-
-
-
-
-
-
 
 
  function showConfetti() {
@@ -224,7 +185,7 @@ if
 
 
 function saveWinner(winner) {
-    fetch("http://localhost:5000/add", {
+    fetch("http://127.0.0.1:5000/add", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

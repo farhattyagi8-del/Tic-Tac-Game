@@ -9,27 +9,22 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect("mongodb://127.0.0.1:27017/tictactoe")
-.then(() => console.log("mongodb Connected"))
-.catch(err => console.log(err));
+
+ .then(() => console.log("mongodb Connected"))
+ .catch(err => console.log(err));
+
+
 
 
 const gameSchema = new mongoose.Schema({
     winner: String,
-    date: {type: Date, default: Date.now}
+    date: {type: Date, default: Date.now}  
 });
 const Game = mongoose.model("Game", gameSchema);
 
 app.get("/", (req, res) => {
      res.send("server is running");
  });
-
-// app.post("/save-result", async (req,res) => {
-//     const {winner} = req.body;
-//     const game = new Game({winner});
-//     await game.save();
-//     res.json({message: "saved"});
-
-// });
 
 app.post("/add", async (req, res) => {   //this update of that 
     try{
@@ -43,11 +38,7 @@ app.post("/add", async (req, res) => {   //this update of that
 
 
 
-// app.get("/result", async( req,res) => {
-//     const game = await
-//     Game.findOne().sort({date: -1});
-//     res.json(game);
-// });
+
 
 
 app.get("/games", async (req, res) => {
@@ -58,3 +49,14 @@ app.get("/games", async (req, res) => {
 app.listen(5000, () => {console.log("server running");
 
 });
+
+
+app.get("/score", async (req, res) => {
+    try {
+        const latestScore = await 
+        Game.findOne().sort({ _id: -1});
+        res.json(latestScore);
+    }catch(err) {
+        res.status(500).send("error");
+    }
+ });
