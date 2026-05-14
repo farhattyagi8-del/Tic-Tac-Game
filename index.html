@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
-<body>
+<body>      
     <div class="msg-container  hidden">
         <p id="msg">Winner</p>
  
@@ -17,9 +17,12 @@
     <main>
 
         <div class="scoreboard">
-            <h2>Scorreboard</h2>
-            <p>X Win: <span id="xscore">0</span></p>
-             <p>O Win: <span id="Oscore">0</span></p>
+            <h2>Scoreboard</h2>
+            <div class="score">
+            <p class="x-text">X</p><span id="xscore" >win: 0</span>
+            <p>|</p>
+             <p class="o-text">O</p><span id="Oscore">win: 0</span>
+             </div>
         </div>
 
 
@@ -46,7 +49,7 @@
               
               
               <div class="options">
-              <button id="resetbtn"><i class="fa-solid fa-power-off" id="btn"></i> </button>
+              <button id="resetbtn"><i class="fa-solid fa-repeat" id="btn"></i> </button>
             
                 <button id="homebtn">
                     <span class="icon">🏠</span>
