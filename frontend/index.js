@@ -150,10 +150,13 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
         // Update current session scores
         if (winner === "X") {
             xScore++;
+            
             document.getElementById("xscore").innerText = xScore;
+            document.getElementById("xscore").style.color = "rgb(185, 231, 69)";
         } else if (winner === "O") {
             OScore++;
             document.getElementById("Oscore").innerText = OScore;
+            document.getElementById("Oscore").style.color = "rgb(185, 231, 69)";
         }
 
         saveWinner(winner);   // Save to MongoDB for records
