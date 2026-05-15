@@ -34,14 +34,14 @@
  .score{
     height: 50px;
     width: 400px;
-        background-color: #0f2027;
+        background-color: #06142b;
         display: flex;
         justify-content: center;
         align-items: center;
         column-gap: 40px;
         border-radius: 10px;
-         border: 2px solid #3b82f6;
-         color: white
+         border: 2px solid #0d2f5c;
+         /* color: white */
  }
 h1{
     margin-top: 2rem;
@@ -49,10 +49,16 @@ h1{
         font-size: 3rem;
 }
 .container{
-    height: 700px;
-     display: flex;
-     justify-content: center;
-     align-items: center; 
+    padding: 25px;
+    border-radius: 25PX;
+     display: grid;
+     grid-template-columns: repeat(3, 1f);
+     gap: 15px;
+     width: fit-content;
+     margin: auto;
+     background-color: #04152d; 
+     border: 2px solid #0d2f5c;
+     box-shadow: 0 0 20px rgba(0, 170, 225, 0.2),0 0 40px rgba(255, 46, 136, 0.1);
 }
 .game{
     height: 60vmin;
@@ -70,11 +76,14 @@ h1{
      border-radius: 15px;
      box-shadow: 0 0 1rem rgb(0, 0, 0);
      font-size: 8vmin;
-     color: rgb(232, 20, 20);
+      background-color: #0f2027;
+         border: 2px solid #3b82f6;
+
+     /* color: rgb(232, 20, 20);
      background-color: rgb(91, 160, 164);
      border: none;
      background: linear-gradient(180deg, #007cc9, #ff3); 
-     
+      */
 }
 .box:hover{
     transform: translate(2px);
@@ -163,38 +172,67 @@ h1{
    
 }
 
-#homebtn {
+ #homebtn {
   width: 200px;
-  height: 70px;
+  height: 60px;
   border: none;
-  border-radius: 40px;
-  background: linear-gradient(180deg, #ff7b00, #ff3c00);
-  box-shadow: 
-    0 8px 0 #c92a00,
-    0 15px 25px rgba(0,0,0,0.4),
-    inset 0 4px 10px rgba(255,255,255,0.4);
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        background: #04152d; 
+     border: 2px solid #3b82f6;
+     box-shadow: 0 0 20px rgba(0, 170, 225, 0.2),0 0 40px rgba(255, 46, 136, 0.1);
   display: flex;
+  font-weight: bold;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: 0.2s;
+  gap: 10px;
+  
 }
 
-#homebtn .icon {
-  font-size: 2.5rem;
+#homebtn .house-icon{
+  font-size: 20px;
   color: white;
 }
 
-#homebtn:active {
-  transform: translateY(5px);
-  box-shadow: 
-    0 3px 0 #c92a00,
-    0 8px 15px rgba(0,0,0,0.3),
+#homebtn:hover {
+    transform: translate(2px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.4),
     inset 0 4px 10px rgba(255,255,255,0.4);
+
+} 
+.home-text{
+    color: white;
+    font-size: 1.5rem;
 }
 
 #resetbtn{
-    height: 70px;
+     /* height: 70px; */
+     padding: 15px 30px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        background: #04152d; 
+     border: 2px solid #3b82f6;
+     box-shadow: 0 0 20px rgba(0, 170, 225, 0.2),0 0 40px rgba(255, 46, 136, 0.1);
+}
+#resetbtn .reset-icon {
+    font-size: 1.2rem;
+    color: aliceblue;
+}
+#resetbtn .reset-text {
+    color: aliceblue;
+}
+    /* height: 70px;
     width: 200px;
     border: none;
     border-radius: 40px;
@@ -203,23 +241,24 @@ h1{
     0 15px 25px rgba(0, 0 ,0, 0.4);
     inset: 0 4px 10px rgba(255,255, 255,0.4);
     transition: 0.2s;
-    cursor: pointer;
-}
-#resetbtn:active {
-    transform: translateY(5px);
-    box-shadow: 0 3px 0 #c92a00,
-    0 8px 15px rgba(0,0,0,0.3),
-    inset 0 4px 10px rgba(255,255,255,0.4);;
+    cursor: pointer; */
+
+#resetbtn:hover {
+    transform: translate(2px);
+         box-shadow: 
+     0 15px 25px rgba(0,0,0,0.4),
+    inset 0 4px 10px rgba(255,255,255,0.4);
+       
 }
 #btn{
-    font-size: 2rem;
+    font-size: 21px;
     color: aliceblue;
     
 }
 
 .box.x{
     font-size: 5rem;
-    color: #0252a3;
+     color:#00aaff;
     text-shadow: 0 0 10px rgba(77, 166, 255, 0.8);
       text-shadow: 0 0 10px rgba(77, 166, 255, 0.6);
         text-shadow: 0 0 10px rgba(77, 166, 255, 0.4);
@@ -228,7 +267,7 @@ h1{
 
 .box.O{
     font-size: 5rem;
-    color: #0252a3;
+    color: #ff2e88;
     text-shadow: 0 0 10px rgba(3, 74, 145, 0.8);
       text-shadow: 0 0 10px rgba(77, 166, 255, 0.6);
         text-shadow: 0 0 10px rgba(77, 166, 255, 0.4);
