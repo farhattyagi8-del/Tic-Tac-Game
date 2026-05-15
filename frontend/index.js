@@ -72,6 +72,7 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
     box.addEventListener("click", () => {  
         
         if (box.innerText !== "") return;
+        // this is use for change the color of O and X when update the box with O or X
         if (!isMuted) clickSound.play();
         
         if (turnO) {
@@ -103,7 +104,27 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
 
 
    const gameDraw = () => {  // this function use for show the game draw message when there is no winner and count is 9
-    msg.innerText = "No winnenr";
+    msg.innerText = "No winner! 😒 ";
+    msg.style.position = "fixed";
+      msg.style.top = "49%";
+        msg.style.left = "50%";
+        msg.style.animation = "move 1s infinite alternate";
+            msg.style.transform = "translate(-50%, -50%)";
+                msg.style.fontSize = "4rem";
+                    msg.style.fontStyle = "bold";
+                        msg.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+                            msg.style.padding = "20px 40px";
+                                msg.style.borderRadius = "10px";
+                                    msg.style.border = "2px solid rgb(246, 219, 44)";
+                                    // msg.style.Keyframesmove{
+                                    //     from{
+                                    //         transform: translateY(0px);
+
+                                    //     }
+                                    //     to{
+                                    //         transform: translateY(-20px);
+                                    //     }
+                                    // }
     if (!isMuted) music.play();
     msgContainer.classList.remove("hidden"); //
     disableBoxes();
@@ -294,7 +315,9 @@ function computerMove() {
          let val2 = boxes[b].innerText;
           let val3 = boxes[c].innerText;
 
-          if(val1 === "X" && val2 === "X" && val3 === ""){
+          if(val1 === "X" && val2 === "X" && val3 === "" )
+
+        {
             makeMove(c);
             return;
           }
