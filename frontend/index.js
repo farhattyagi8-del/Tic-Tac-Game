@@ -14,7 +14,12 @@ let OScore = 0;
 let turnO = true;   // this variable use for check the turn of player if true then O and false then X
 let count = 0;
 
- const winPatterns = [    // this is the rray of winning pattern in tic tac toe game
+const currentTrunDisplay = document.getElementById("currentTurn");
+const UpdateCurrentPlayerDisplay = () => {
+    currentTrunDisplay.innerText = `player ${turnO ? "O" : "X"}`;
+};
+
+const winPatterns = [    // this is the rray of winning pattern in tic tac toe game
     [0, 1, 2],
     [0, 3, 6],
     [0, 4, 8],  
@@ -31,12 +36,12 @@ let count = 0;
     count = 0; //
     enableBoxes();  // this is use for enable the boxes when reset the game
     msgContainer.classList.add("hidden");   // this is use for hide the message container when reset the game
+    UpdateCurrentPlayerDisplay();
 };
 
 // boxes.forEach((box) => {    //this use for add event listner on each box when click on box then it will check the turn of player and update the box with O or X and disable the box after click and also check the winner after each click
 
 //     box.addEventListener("click", () => {  
-        
         
 //         if (!isMuted) clickSound.play();
 
@@ -80,6 +85,7 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
             box.classList.add("O"); // this is use for update the box with O when turnO is true
             turnO = false;
             count++;
+            UpdateCurrentPlayerDisplay();
         }
         
         box.disabled = true; // this is use for disable the box after click
@@ -95,7 +101,8 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
             setTimeout(() => {  /// call bay ai to delay
                 computerMove();
                 turnO = true;
-            }, 500);  ///5000 means 0.5 millisecond
+                UpdateCurrentPlayerDisplay();
+            }, 500);  ///500 means 0.5 second
         }
 
     });
@@ -103,7 +110,8 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
 });
 
 
-   const gameDraw = () => {  // this function use for show the game draw message when there is no winner and count is 9
+   UpdateCurrentPlayerDisplay();
+const gameDraw = () => {  // this function use for show the game draw message when there is no winner and count is 9
     msg.innerText = "No winner! 😒 ";
     msg.style.position = "fixed";
       msg.style.top = "49%";
@@ -142,7 +150,9 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
         for (let box of boxes) {
             box.disabled = false;
             box.innerText = "";
+            box.classList.remove("x", "O");
         }
+        UpdateCurrentPlayerDisplay();
      };
     
 
@@ -151,7 +161,6 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
     msg.style.position = "fixed";
       msg.style.top = "49%";
         msg.style.left = "50%";
-        
             msg.style.transform = "translate(-50%, -50%)";
             msg.style.fontSize = "4rem";
              msg.style.fontStyle = "italic";
@@ -385,3 +394,4 @@ count++;
         gameDraw();
     }
 }
+
