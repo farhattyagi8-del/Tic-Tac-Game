@@ -382,6 +382,166 @@ h1{
         box-shadow: 0 0 20px rgba(0, 170, 225, 0.2),0 0 40px rgba(255, 46, 136, 0.1);
     font-size: 1.5rem;
     color: white;
+    margin-top: 100px;
     
     
 }   
+.Match{
+    height: 250px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+        margin-left:200px ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        border: 2px solid #3b82f6;
+        background-color: #04152d; 
+        box-shadow: 0 0 20px rgba(0, 170, 225, 0.2),0 0 40px rgba(255, 46, 136, 0.1);
+        font-size: 1.5rem;
+        color: white;
+        margin-top: 100px;
+        gap: 10px;
+        
+}
+/* .match-player{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    font-size: 2rem;
+    font-weight: bold;
+    background: greenyellow;
+}
+.wins{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: blue;
+}
+.Draws{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: gray;
+}
+.match-player span, .wins span, .Draws span{
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(254, 243, 254);
+
+}
+#matches, #wins, #draws{
+    display: flex;
+    margin-left: 0;
+    text-align: left;
+
+}
+.Match span{
+    color: rgb(185, 38, 38);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.Match p{
+    color: rgb(20, 119, 124);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 10px;
+    text-align: right;
+    display: flex;
+} */
+
+.stat{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* justify-content: space-between ; */
+    margin: 10px 10px 10px 20px;
+    align-items: center;
+    padding: 0 1px;
+}
+#matches{
+    color: green;
+    margin: 0 0 0 50px;
+}
+#wins{
+    color: blue;
+        margin: 0 0 0 83px;
+}
+#draws{
+    color: rgb(250, 250, 31);
+        margin: 0 0 0 70px;
+}
+.gift-box{
+    height: 100px;
+    padding: 20px;
+    width: 100px;
+    background: linear-gradient(145deg,#091221, #10263f);
+    border: 2px solid #3b82f6;
+     box-shadow: 0 0 20px rgba(0, 170, 225, 0.2),0 0 40px rgba(255, 46, 136, 0.1);
+    border-radius: 10px;
+     text-align: center;
+    display: flex;
+    animation: glow 2s infinite alternate;
+    /* align-items: center;
+    justify-content: center; */
+    font-size: 2rem;
+    color: white;
+}
+.gift-title{
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px cyan;
+}
+.gift-reward{
+    background: #ff2e88;
+    padding: 15px;
+    border-radius: 18px;
+    margin-top: 10px;
+}
+
+.gift-reward h3{
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: gold;
+}
+.gift-reward p{
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+.reward-icon{
+    font-size: 30px;
+    margin-bottom: 10px;
+    animation: bounce 1.5s infinite ;
+}
+
+@keyframes glow{
+    from{
+        box-shadow: 0 0 10px rgba(0, 170, 225, 0.2),0 0 20px rgba(255, 46, 136, 0.1);
+    }
+    to{
+        box-shadow: 0 0 20px #00f7ff,
+        0 0 40px #ff2e88;
+    }
+}
+
+@keyframes bounce{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-8px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
