@@ -17,6 +17,7 @@ let count = 0;
 const currentTrunDisplay = document.getElementById("currentTurn");
 const UpdateCurrentPlayerDisplay = () => {
     currentTrunDisplay.innerText = `player ${turnO ? "O" : "X"}`;
+    currentTrunDisplay.style.color = turnO ? "rgb(240, 37, 132)" : "rgb(30, 94, 137)";
 };
 
 const winPatterns = [    // this is the rray of winning pattern in tic tac toe game
@@ -136,6 +137,7 @@ const gameDraw = () => {  // this function use for show the game draw message wh
     if (!isMuted) music.play();
     msgContainer.classList.remove("hidden"); //
     disableBoxes();
+    updateMatchStatus("draw");
 
    };
 
@@ -158,6 +160,8 @@ const gameDraw = () => {  // this function use for show the game draw message wh
 
  const showWinner = (winner) => { // this function use for show the winner message when there is a winner and also disable all the boxes
     msg.innerText = `Congratulations! ${winner} wins!`;
+
+
     msg.style.position = "fixed";
       msg.style.top = "49%";
         msg.style.left = "50%";
@@ -180,7 +184,6 @@ const gameDraw = () => {  // this function use for show the game draw message wh
         // Update current session scores
         if (winner === "X") {
             xScore++;
-            
             document.getElementById("xscore").innerText = xScore;
             document.getElementById("xscore").style.color = "rgb(185, 231, 69)";
         } else if (winner === "O") {
@@ -189,6 +192,7 @@ const gameDraw = () => {  // this function use for show the game draw message wh
             document.getElementById("Oscore").style.color = "rgb(185, 231, 69)";
         }
 
+        updateMatchStatus(winner);
         saveWinner(winner);   // Save to MongoDB for records
    };
 
@@ -209,6 +213,7 @@ const checkWinner = () => {  // this function use for check the winner by iterat
                     return true;
     
 }
+
         }
     }
 
@@ -395,3 +400,45 @@ count++;
     }
 }
 
+let matchCount = 0;
+let xWins = 0;
+let oWins = 0;
+let draws = 0;
+
+function updateMatchStatus(winner) {
+    matchCount++;
+    document.getElementById("matches").innerText = matchCount;
+
+    if (winner === "X") {
+        xWins++;
+    } else if (winner === "O") {
+        oWins++;
+    } else {
+        draws++;
+    }
+
+    document.getElementById("wins").innerText = xWins + oWins;
+    document.getElementById("draws").innerText = draws;
+  }
+  
+// let xWins = 0;
+// let oWins = 0;
+// let draws = 0;
+
+// function checkWinner(player){
+//     if (player ==="X"){
+//         xWins++;
+//         if(xWins > 2){
+//             document.getElementById("gift").innerText = "🎁";
+//         }
+        
+//     }else if(player === "O"){
+//         oWins++;
+//         if(oWins > 2){
+//             document.getElementById("gift").innerText = "🎁";
+//         }
+//     }else{
+//         draws++;
+        
+//     }
+// }
