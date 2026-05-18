@@ -15,10 +15,38 @@ let turnO = true;   // this variable use for check the turn of player if true th
 let count = 0;
 
 const currentTrunDisplay = document.getElementById("currentTurn");
+const playerBtn = document.getElementById("player");
+const playersBtn = document.getElementById("players");
+let isPlayerVsAI = true;
+
+const updateModeButtons = () => {
+    if (isPlayerVsAI) {
+        playerBtn.classList.add("mode-active");
+        playersBtn.classList.remove("mode-active");
+    } else {
+        playersBtn.classList.add("mode-active");
+        playerBtn.classList.remove("mode-active");
+    }
+};
+
 const UpdateCurrentPlayerDisplay = () => {
     currentTrunDisplay.innerText = `player ${turnO ? "O" : "X"}`;
-    currentTrunDisplay.style.color = turnO ? "rgb(240, 37, 132)" : "rgb(30, 94, 137)";
+    currentTrunDisplay.style.color = turnO ? "rgb(240, 37, 132)" : "rgb(19, 134, 210)";
 };
+
+playerBtn.addEventListener("click", () => {
+    isPlayerVsAI = true;
+    updateModeButtons();
+    resetGame();
+});
+
+playersBtn.addEventListener("click", () => {
+    isPlayerVsAI = false;
+    updateModeButtons();
+    resetGame();
+});
+
+updateModeButtons();
 
 const winPatterns = [    // this is the rray of winning pattern in tic tac toe game
     [0, 1, 2],
@@ -40,51 +68,27 @@ const winPatterns = [    // this is the rray of winning pattern in tic tac toe g
     UpdateCurrentPlayerDisplay();
 };
 
-// boxes.forEach((box) => {    //this use for add event listner on each box when click on box then it will check the turn of player and update the box with O or X and disable the box after click and also check the winner after each click
-
-//     box.addEventListener("click", () => {  
-        
-//         if (!isMuted) clickSound.play();
-
-//         if (turnO) {
-//             box.innerText ="O";
-//             box.classList.add("O"); // this is use for update the box with O when turnO is true
-//             turnO = false;
-//         }else {
-//             box.innerText = "X";
-//             box.classList.add("x");
-//             turnO = true;
-//         }
-//         box.disabled = true; // this is use for disable the box after click
-//         count++;  // this is use for count the number of click on box and when count is 9 then it will check the game draw
-
-//         let isWinner = checkWinner();  // this is use for check the winner after each click and return true if there is a winner
-
-//         if (count === 9 && !isWinner) { 
-//             gameDraw();
-//         }
-//         if(!turnO && !isWinner) {
-//             setTimeout(computerMove, 500);
-//         }
-
-//     });
-
-// });
-
+//
 
 
 boxes.forEach((box) => {    //this use for add event listner on each box when click on box then it will check the turn of player and update the box with O or X and disable the box after click and also check the winner after each click
 
     box.addEventListener("click", () => {  
-        
         if (box.innerText !== "") return;
-        // this is use for change the color of O and X when update the box with O or X
+        if (!turnO && isPlayerVsAI) return; // Ignore human X clicks in AI mode while the bot is thinking
+
         if (!isMuted) clickSound.play();
         
         if (turnO) {
-            box.innerText ="O";
+            box.innerText = "O";
             box.classList.add("O"); // this is use for update the box with O when turnO is true
             turnO = false;
+            count++;
+            UpdateCurrentPlayerDisplay();
+        } else {
+            box.innerText = "X";
+            box.classList.add("x");
+            turnO = true;
             count++;
             UpdateCurrentPlayerDisplay();
         }
@@ -98,7 +102,7 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
             gameDraw();
             return;
         }
-        if(!turnO && !isWinner) {   
+        if (!turnO && !isWinner && isPlayerVsAI) {   
             setTimeout(() => {  /// call bay ai to delay
                 computerMove();
                 turnO = true;
@@ -291,33 +295,7 @@ function saveWinner(winner) {
 };
 
 
-// function computerMove() {
-//     let emptyBoxes = [];          // its basicallyy computer and random choice empty box
 
-//     boxes.forEach((box, index) => {
-//         if(box.innerText === "") {
-//             emptyBoxes.push(index);
-//         }
-//     });
-
-//     if (emptyBoxes.length === 0) return;
-
-//     let randomIndex = emptyBoxes[Math.floor(Math.random() * emptyBoxes.length)];
-//     let  box = boxes[randomIndex];
-
-//     box.innerText = "X";
-//     box.classList.add("x");
-//     box.disabled = true;
-
-//     count++;
-
-//       let iswinner = checkWinner();
-//       if (count === 9 && !iswinner){
-//         gameDraw();
-//       }
-
-
-//  }
 
 
 function computerMove() {
@@ -421,24 +399,3 @@ function updateMatchStatus(winner) {
     document.getElementById("draws").innerText = draws;
   }
   
-// let xWins = 0;
-// let oWins = 0;
-// let draws = 0;
-
-// function checkWinner(player){
-//     if (player ==="X"){
-//         xWins++;
-//         if(xWins > 2){
-//             document.getElementById("gift").innerText = "🎁";
-//         }
-        
-//     }else if(player === "O"){
-//         oWins++;
-//         if(oWins > 2){
-//             document.getElementById("gift").innerText = "🎁";
-//         }
-//     }else{
-//         draws++;
-        
-//     }
-// }
