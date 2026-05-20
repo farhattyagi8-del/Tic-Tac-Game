@@ -7,6 +7,7 @@ let clickSound = document.querySelector("#clickSound");
 let music = document.querySelector("#music");
 let winSound = document.querySelector("#winSound");
 
+
 // Current session scores (reset on page refresh)
 let xScore = 0;
 let OScore = 0;
@@ -282,14 +283,14 @@ if
 
 
 function saveWinner(winner) {
-    fetch("http://127.0.0.1:5000/add", {
+    fetch("http://localhost:5000/add", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({winner})
     })
-    .then(res => res.text())
+    .then(res => res.json())
     .then(data => console.log("saved:", data))
     .catch(err => console.log("error:", err));
 };

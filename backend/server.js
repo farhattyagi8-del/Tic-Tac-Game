@@ -9,12 +9,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI
-    
-)
+const mongoUri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/tictac";
 
- .then(() => console.log("mongodb Connected"))
- .catch(err => console.log(err));
+mongoose.connect(mongoUri)
+    .then(() => console.log("mongodb Connected"))
+    .catch(err => console.log("Mongo Error: ", err));
 
 
 
@@ -25,17 +24,23 @@ const gameSchema = new mongoose.Schema({
 });
 const Game = mongoose.model("Game", gameSchema);
 
+// Routes
 app.get("/", (req, res) => {
      res.send("server is running");
  });
 
+ // Route to add a new game result
+
 app.post("/add", async (req, res) => {   //this update of that 
-    try{
-        const game = new Game(req.body);
+    try {
+        const game = new Game({
+            winner: req.body.winner
+        });
         await game.save();
-        res.send("Game Saved");
-    }catch (err) {
-        res.status(500).send(err);
+        res.json({ success: true, message: "Game Saved" });
+    } catch (err) {
+        console.error("Error saving game:", err);
+        res.status(500).json({ success: false, message: "Error saving game" });
     }
 });
 
@@ -49,17 +54,34 @@ app.get("/games", async (req, res) => {
     res.json(data);
 });
 
-app.listen(5000, () => {console.log("server running");
-
+app.get("/score", async (req, res) => {
+    try {
+        const latestScore = await Game.findOne().sort({ _id: -1 });
+        res.json(latestScore);
+    } catch (err) {
+        console.error("Error fetching latest score:", err);
+        res.status(500).send("Error fetching latest score");
+    }
 });
 
+app.listen(process.env.PORT || 5000, () => {
+    console.log("Server is running on port 5000");
+});
 
-app.get("/score", async (req, res) => {
+ //latest start
+
+ app.get("/score", async (req, res) => {
     try {
         const latestScore = await 
         Game.findOne().sort({ _id: -1});
         res.json(latestScore);
     }catch(err) {
-        res.status(500).send("error");
+        console.error("Error fetching latest score:", err);
+        res.status(500).send("Error fetching latest score");
     }
  });
+ 
+
+ app.listen(5000, () => {
+    console.log("Server is running on port 5000");
+});
