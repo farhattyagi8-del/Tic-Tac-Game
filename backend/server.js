@@ -71,24 +71,3 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
-// app.listen(process.env.PORT || 5000, () => {
-//     console.log("Server is running on port 5000");
-// });
-
-//  //latest start
-
-//  app.get("/score", async (req, res) => {
-//     try {
-//         const latestScore = await 
-//         Game.findOne().sort({ _id: -1});
-//         res.json(latestScore);
-//     }catch(err) {
-//         console.error("Error fetching latest score:", err);
-//         res.status(500).send("Error fetching latest score");
-//     }
-//  });
- 
-
-//  app.listen(5000, () => {
-//     console.log("Server is running on port 5000");
-// });
