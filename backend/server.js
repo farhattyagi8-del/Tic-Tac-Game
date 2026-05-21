@@ -51,7 +51,7 @@ app.post("/add", async (req, res) => {   //this update of that
 
 
 app.get("/games", async (req, res) => {
-    const data = (await Game.find()).toSorted({ date: -1 });
+    const data = (await Game.find()).sort({ date: -1 });
     res.json(data);
 });
 
