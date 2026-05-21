@@ -36,7 +36,8 @@ app.post("/add", async (req, res) => {   //this update of that
         const game = new Game({
             winner: req.body.winner
         });
-        await game.save();
+         const savedGame = await game.save();
+         console.log("Game saved:", savedGame);
         res.json({ success: true, message: "Game Saved" });
     } catch (err) {
         console.error("Error saving game:", err);
@@ -50,7 +51,7 @@ app.post("/add", async (req, res) => {   //this update of that
 
 
 app.get("/games", async (req, res) => {
-    const data = await Game.find();
+    const data = (await Game.find()).toSorted({ date: -1 });
     res.json(data);
 });
 
@@ -60,28 +61,34 @@ app.get("/score", async (req, res) => {
         res.json(latestScore);
     } catch (err) {
         console.error("Error fetching latest score:", err);
-        res.status(500).send("Error fetching latest score");
+        res.status(500).json({ success: false, message: "Error fetching latest score" });
     }
 });
 
-app.listen(process.env.PORT || 5000, () => {
-    console.log("Server is running on port 5000");
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
- //latest start
+// app.listen(process.env.PORT || 5000, () => {
+//     console.log("Server is running on port 5000");
+// });
 
- app.get("/score", async (req, res) => {
-    try {
-        const latestScore = await 
-        Game.findOne().sort({ _id: -1});
-        res.json(latestScore);
-    }catch(err) {
-        console.error("Error fetching latest score:", err);
-        res.status(500).send("Error fetching latest score");
-    }
- });
+//  //latest start
+
+//  app.get("/score", async (req, res) => {
+//     try {
+//         const latestScore = await 
+//         Game.findOne().sort({ _id: -1});
+//         res.json(latestScore);
+//     }catch(err) {
+//         console.error("Error fetching latest score:", err);
+//         res.status(500).send("Error fetching latest score");
+//     }
+//  });
  
 
- app.listen(5000, () => {
-    console.log("Server is running on port 5000");
-});
+//  app.listen(5000, () => {
+//     console.log("Server is running on port 5000");
+// });
