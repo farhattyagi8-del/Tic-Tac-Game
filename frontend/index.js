@@ -283,7 +283,7 @@ if
 
 
 function saveWinner(winner) {
-    fetch("http://localhost:5000/add", {
+    fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
