@@ -42,7 +42,13 @@
   -Database connectivity
   -Javascript game logic
   -Responsive web development
-  
+
+  ## 📸 Screenshot 
+<img width="1818" height="920" alt="Screenshot 2026-05-24 162014" src="https://github.com/user-attachments/assets/53f903ea-4e95-413b-a882-9247a9b36110" />
+
+
+
+
 
 
 
