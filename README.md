@@ -23,8 +23,8 @@
    -Noode.js  
    ### Database
    -MongoDB   
-   ## Deployment Platform
-    Railway
+   ### Deployment Platform
+    -Railway
 
    ## 📌 Project Highlights  
    -Designed with responsive web principles  
