@@ -6,9 +6,9 @@
    
  
    ## 🚀 Key Features
-   Interactive two-players gameplay
-   Responsive and clean user interface
-   -Real-ime win and draw detecation
+   -Interactive two-players gameplay          
+   -Responsive and clean user interface      
+   -Real-ime win and draw detecation    
    -Restart and reset funtionality
    -Backend server intergration using Node.js
    -MongoDB database connectivity
