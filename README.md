@@ -5,4 +5,15 @@
                   and backend/database integration for scalable game management.
    
  
-   ## 🚀 - ** Key Features **
+   ## 🚀 Key Features
+   -Interactive two-players gameplay
+   -Responsive and clean user interface
+   -Real-ime win and draw detecation
+   -Restart and reset funtionality
+   -Backend server intergration using Node.js
+   -MongoDB database connectivity
+   -Optimized game logic and user interaction 
+   -
+   ## Tech Stack
+   ## Frontend
+   -
