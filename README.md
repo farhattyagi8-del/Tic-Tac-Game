@@ -51,6 +51,11 @@
 ## 🌐 Live Demo
  https://farhattyagi8-del.github.io/Tic-Tac-Game/
 
+  ## 🚄 Railway Deployment
+   tic-tac-game-production-a7f6.up.railway.app
+
+ 
+
 
 
 
