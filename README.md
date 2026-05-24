@@ -5,4 +5,4 @@
                   and backend/database integration for scalable game management.
    
  
-   ## 🚀 - ** responsive**
+   ## 🚀 - ** Key Features **
