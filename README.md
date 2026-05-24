@@ -22,7 +22,9 @@
    ###  Backend
    -Noode.js  
    ### Database
-   -MongoDB  
+   -MongoDB   
+   ## Deployment Platform
+    Railway
 
    ## 📌 Project Highlights  
    -Designed with responsive web principles  
