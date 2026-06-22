@@ -9,7 +9,7 @@ let winSound = document.querySelector("#winSound");
 
 const API_BASE_URL = ["", "localhost", "127.0.0.1"].includes(window.location.hostname)
     ? "http://localhost:5000"
-    : "https://tic-tac-game-backend.onrender.com";
+    : "https://tic-tac-game-production-a7f6.up.railway.app";
 
 
 // Current session scores (reset on page refresh)
