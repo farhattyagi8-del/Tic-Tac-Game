@@ -24,7 +24,9 @@
    ### Database
    -MongoDB   
    ### Deployment Platform
+    -Vercel
     -Railway
+    
 
    ## 📌 Project Highlights  
    -Designed with responsive web principles  
