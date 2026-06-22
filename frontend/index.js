@@ -3,7 +3,7 @@ let resetbtn = document.querySelector("#resetbtn");
 let newbtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container"); //this use for select the element of html like sclass or id nane to access
 let msg = document.querySelector("#msg");
-let clickSound = document.querySelector("#clickSound");
+let clickSound = document.querySelector("#clickSound"); 
 let music = document.querySelector("#music");
 let winSound = document.querySelector("#winSound");
 
@@ -285,6 +285,19 @@ if
 }
 });
 
+
+// function saveWinner(winner) {
+//     fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({winner})
+//     })
+//     .then(res => res.json())
+//     .then(data => console.log("saved:", data))
+//     .catch(err => console.log("error:", err));
+// };
 
 function saveWinner(winner) {
 
