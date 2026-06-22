@@ -295,6 +295,33 @@ function saveWinner(winner) {
     .catch(err => console.log("error:", err));
 };
 
+// function saveWinner(winner) {
+
+// console.log("Winner send:", winner);
+// fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
+
+//  fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
+// method:"POST",
+// headers:{
+// "Content-Type":"application/json"
+// },
+// body:JSON.stringify({
+// winner:winner
+// })
+// })
+// .then(async(res)=>{
+// console.log("Status:",res.status);
+
+// const data=await res.json();
+
+// console.log("Response:",data);
+// })
+// .catch((err)=>{
+// console.log("Fetch error:",err);
+// });
+
+// }
+
 
 
 
