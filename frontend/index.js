@@ -9,7 +9,7 @@ let winSound = document.querySelector("#winSound");
 
 const API_BASE_URL = ["", "localhost", "127.0.0.1"].includes(window.location.hostname)
     ? "http://localhost:5000"
-    : "https://tic-tac-game-production-a7f6.up.railway.app";
+    : "https://tic-tac-game-backend.onrender.com";
 
 
 // Current session scores (reset on page refresh)
@@ -285,19 +285,6 @@ if
 }
 });
 
-
-// function saveWinner(winner) {
-//     fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify({winner})
-//     })
-//     .then(res => res.json())
-//     .then(data => console.log("saved:", data))
-//     .catch(err => console.log("error:", err));
-// };
 
 function saveWinner(winner) {
 
