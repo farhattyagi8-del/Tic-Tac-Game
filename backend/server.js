@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mongoUri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/tictac";
+const mongoUri = process.env.MONGODB_URI || process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/tictac";
 
 mongoose.connect(mongoUri)
     .then(() => console.log("mongodb Connected"))
@@ -33,6 +33,10 @@ app.get("/", (req, res) => {
 
 app.post("/add", async (req, res) => {   //this update of that 
     try {
+        if (!req.body.winner) {
+            return res.status(400).json({ success: false, message: "Winner is required" });
+        }
+
         const game = new Game({
             winner: req.body.winner
         });

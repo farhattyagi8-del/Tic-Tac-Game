@@ -7,6 +7,10 @@ let clickSound = document.querySelector("#clickSound");
 let music = document.querySelector("#music");
 let winSound = document.querySelector("#winSound");
 
+const API_BASE_URL = ["", "localhost", "127.0.0.1"].includes(window.location.hostname)
+    ? "http://localhost:5000"
+    : "https://tic-tac-game-production-a7f6.up.railway.app";
+
 
 // Current session scores (reset on page refresh)
 let xScore = 0;
@@ -298,7 +302,7 @@ if
 function saveWinner(winner) {
 
 console.log("Winner send:", winner);
-fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
+fetch(`${API_BASE_URL}/add`, {
 
 method:"POST",
 headers:{
@@ -314,6 +318,9 @@ console.log("Status:",res.status);
 const data=await res.json();
 
 console.log("Response:",data);
+if (!res.ok) {
+throw new Error(data.message || "Winner save failed");
+}
 })
 .catch((err)=>{
 console.log("Fetch error:",err);
