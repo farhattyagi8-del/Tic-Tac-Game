@@ -282,45 +282,44 @@ if
 });
 
 
-function saveWinner(winner) {
-    fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({winner})
-    })
-    .then(res => res.json())
-    .then(data => console.log("saved:", data))
-    .catch(err => console.log("error:", err));
-};
-
 // function saveWinner(winner) {
+//     fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({winner})
+//     })
+//     .then(res => res.json())
+//     .then(data => console.log("saved:", data))
+//     .catch(err => console.log("error:", err));
+// };
 
-// console.log("Winner send:", winner);
-// fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
+function saveWinner(winner) {
 
-//  fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
-// method:"POST",
-// headers:{
-// "Content-Type":"application/json"
-// },
-// body:JSON.stringify({
-// winner:winner
-// })
-// })
-// .then(async(res)=>{
-// console.log("Status:",res.status);
+console.log("Winner send:", winner);
+fetch("https://tic-tac-game-production-a7f6.up.railway.app/add", {
 
-// const data=await res.json();
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+winner:winner
+})
+})
+.then(async(res)=>{
+console.log("Status:",res.status);
 
-// console.log("Response:",data);
-// })
-// .catch((err)=>{
-// console.log("Fetch error:",err);
-// });
+const data=await res.json();
 
-// }
+console.log("Response:",data);
+})
+.catch((err)=>{
+console.log("Fetch error:",err);
+});
+
+}
 
 
 
