@@ -89,6 +89,75 @@ h1{
 }
 
 #msg{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    max-width: min(90vw, 620px);
+    box-sizing: border-box;
+    padding: clamp(16px, 4vw, 28px) clamp(18px, 6vw, 42px);
+    border-radius: 12px;
+    border: 2px solid rgb(246, 219, 44);
+    background-color: rgba(0, 0, 0, 0.78);
+    color: rgb(246, 219, 44);
+    font-size: clamp(1.6rem, 8vw, 4rem);
+    line-height: 1.15;
+    text-align: center;
+    overflow-wrap: break-word;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+#msg.winner-msg{
+    font-style: italic;
+    max-width: 95vw;
+    padding: clamp(12px, 3vw, 22px) clamp(14px, 4vw, 32px);
+    font-size: clamp(1.25rem, 5vw, 2.8rem);
+    white-space: nowrap;
+}
+
+#msg.draw-msg{
+    animation: move 1s infinite alternate;
+}
+
+@keyframes move {
+    from {
+        transform: translate(-50%, -50%);
+    }
+
+    to {
+        transform: translate(-50%, calc(-50% - 16px));
+    }
+}
+
+.msg-container:not(.hidden){
+    position: fixed;
+    inset: 0;
+    z-index: 19;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    pointer-events: none;
+}
+
+.msg-container:not(.hidden)::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 21, 45, 0.28);
+}
+
+.msg-container:not(.hidden) #msg{
+    pointer-events: auto;
+}
+
+.msg-container.hidden{
+    display: none;
+}
+
+/* fallback styling before a result is shown */
+.msg-container.hidden #msg{
     font-size: 2rem;
     color: rgb(241, 242, 245);
 }

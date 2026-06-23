@@ -70,6 +70,7 @@ const winPatterns = [    // this is the rray of winning pattern in tic tac toe g
     count = 0; //
     enableBoxes();  // this is use for enable the boxes when reset the game
     msgContainer.classList.add("hidden");   // this is use for hide the message container when reset the game
+    msg.classList.remove("winner-msg", "draw-msg");
     UpdateCurrentPlayerDisplay();
 };
 
@@ -123,26 +124,8 @@ boxes.forEach((box) => {    //this use for add event listner on each box when cl
    UpdateCurrentPlayerDisplay();
 const gameDraw = () => {  // this function use for show the game draw message when there is no winner and count is 9
     msg.innerText = "No winner! 😒 ";
-    msg.style.position = "fixed";
-      msg.style.top = "49%";
-        msg.style.left = "50%";
-        msg.style.animation = "move 1s infinite alternate";
-            msg.style.transform = "translate(-50%, -50%)";
-                msg.style.fontSize = "4rem";
-                    msg.style.fontStyle = "bold";
-                        msg.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-                            msg.style.padding = "20px 40px";
-                                msg.style.borderRadius = "10px";
-                                    msg.style.border = "2px solid rgb(246, 219, 44)";
-                                    // msg.style.Keyframesmove{
-                                    //     from{
-                                    //         transform: translateY(0px);
-
-                                    //     }
-                                    //     to{
-                                    //         transform: translateY(-20px);
-                                    //     }
-                                    // }
+    msg.classList.remove("winner-msg");
+    msg.classList.add("draw-msg");
     if (!isMuted) music.play();
     msgContainer.classList.remove("hidden"); //
     disableBoxes();
@@ -169,22 +152,8 @@ const gameDraw = () => {  // this function use for show the game draw message wh
 
  const showWinner = (winner) => { // this function use for show the winner message when there is a winner and also disable all the boxes
     msg.innerText = `Congratulations! ${winner} wins!`;
-
-
-    msg.style.position = "fixed";
-      msg.style.top = "49%";
-        msg.style.left = "50%";
-            msg.style.transform = "translate(-50%, -50%)";
-            msg.style.fontSize = "4rem";
-             msg.style.fontStyle = "italic";
-              msg.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-               msg.style.padding = "20px 40px";
-                msg.style.borderRadius = "10px";
-                msg.style.border = "2px solid rgb(246, 219, 44)";
-             msg.style.color = "rgb(246, 219, 44)";
-              msg.style.textShadow = "0 0 10px rgba(255, 255, 255, 0.8)";
-               msg.style.textShadow = "0 0 10px rgba(255, 255, 255, 0.6)";
-                msg.style.textShadow = "0 0 10px rgba(255, 255, 255, 0.4)";
+    msg.classList.remove("draw-msg");
+    msg.classList.add("winner-msg");
     if (!isMuted) winSound.play();
     showConfetti();
     msgContainer.classList.remove("hidden");
